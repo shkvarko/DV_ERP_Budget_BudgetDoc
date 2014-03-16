@@ -33,6 +33,8 @@ namespace ErpBudgetBudgetDoc
         /// </summary>
         private System.Threading.Thread thrLoadConditionForSelectRoute;
 
+        private UniXP.Common.CProfile m_objProfile;
+
         private System.String m_strMainDynamicRight;
         private System.String m_strCanShow = ">>";
         private System.String m_strCanHide = "<<";
@@ -149,7 +151,7 @@ namespace ErpBudgetBudgetDoc
         #endregion
 
         #region Конструкторы
-        public uctrlBudgetDocRoute()
+        public uctrlBudgetDocRoute(UniXP.Common.CProfile objProfile)
         {
             InitializeComponent();
 
@@ -159,11 +161,13 @@ namespace ErpBudgetBudgetDoc
             m_strMainDynamicRight = "";
             grCtrlRoute.Text = strCaptionNotOptimize;
             m_objUserBudgetRightsList = null;
+            m_objProfile = objProfile;
         }
         public uctrlBudgetDocRoute(ERP_Budget.Common.CBudgetDoc objBudgetDoc,  
             System.String strDR,
             List<ERP_Budget.Common.CUserBudgetRights> objUserBudgetRightsList, 
-            List<ERP_Budget.Common.CRouteCondition> objListCondition)
+            List<ERP_Budget.Common.CRouteCondition> objListCondition, 
+            UniXP.Common.CProfile objProfile)
         {
             InitializeComponent();
 
@@ -172,7 +176,8 @@ namespace ErpBudgetBudgetDoc
             m_objBudgetDoc = objBudgetDoc;
             m_strMainDynamicRight = strDR;
             grCtrlRoute.Text = strCaptionNotOptimize;
-            m_objUserBudgetRightsList = objUserBudgetRightsList; 
+            m_objUserBudgetRightsList = objUserBudgetRightsList;
+            m_objProfile = objProfile;
         }
         /// <summary>
         /// Загружает список маршрутов с условиями, при выполнении которых выбирается маршрут
@@ -227,12 +232,14 @@ namespace ErpBudgetBudgetDoc
         /// </summary>
         /// <param name="objRoutePointList">список точек маршрута</param>
         /// <param name="IsNeedFillUserList">заполнять список пользователей</param>
-        public void RouteDraw(List<ERP_Budget.Common.CRoutePoint> objRoutePointList, System.Boolean IsNeedFillUserList)
+        public void RouteDraw(List<ERP_Budget.Common.CRoutePoint> objRoutePointList, 
+            System.Boolean IsNeedFillUserList)
         {
             try
             {
                 // стираем все картинки
                 //this.SuspendLayout();
+                System.String strErr = System.String.Empty;
 
                 ((System.ComponentModel.ISupportInitialize)(this.pnlCtrlRouteImage)).BeginInit();
                 this.pnlCtrlRouteImage.SuspendLayout();
@@ -304,7 +311,15 @@ namespace ErpBudgetBudgetDoc
                         cboxEvent.Size = new System.Drawing.Size(120, 22);
                         cboxEvent.Tag = objRoutePoint;
                         cboxEvent.CloseUp += new DevExpress.XtraEditors.Controls.CloseUpEventHandler(this.cboxEvent_CloseUp);
-                        cboxEvent.Text = (objRoutePoint.UserEvent == null) ? "" : objRoutePoint.UserEvent.UserFullName;
+                        if (objRoutePoint.UserEvent != null)
+                        {
+                            cboxEvent.Properties.Items.Add(objRoutePoint.UserEvent);
+                            cboxEvent.SelectedItem = cboxEvent.Properties.Items[0];
+                        }
+                        else
+                        {
+                            cboxEvent.SelectedItem = null;
+                        }
                         cboxEvent.Properties.ReadOnly = (IsNeedFillUserList == false);
                         if (bIsCurPoint)
                         {
@@ -322,62 +337,43 @@ namespace ErpBudgetBudgetDoc
                             if (i == 0)
                             {
                                 // первая точка маршрута - должен быть один пользователь
-                                cboxEvent.Properties.Items.Add(m_objBudgetDoc.OwnerUser.UserFullName);
-                                cboxEvent.Text = cboxEvent.Properties.Items[0].ToString();
+                                cboxEvent.Properties.Items.Add(m_objBudgetDoc.OwnerUser);
+                                cboxEvent.SelectedItem = cboxEvent.Properties.Items[0];
                                 objRoutePoint.UserEvent = m_objBudgetDoc.OwnerUser;
                             }
                             else
                             {
-                                foreach (ERP_Budget.Common.CUser objUser in objRoutePoint.BudgetDocEvent.UserList)
+                                //запрос списка пользователей, имеющих доступ к действию
+                                System.Guid BudgetDocEvent_Guid = objRoutePoint.BudgetDocEvent.uuidID;
+                                System.Guid BudgetDep_Guid = ( ( m_objBudgetDoc.BudgetDep != null ) ? m_objBudgetDoc.BudgetDep.uuidID : System.Guid.Empty );
+                                System.Guid Budget_Guid = ( ( ( m_objBudgetDoc.BudgetItem != null ) && ( m_objBudgetDoc.BudgetItem.BudgetGUID.CompareTo( System.Guid.Empty ) != 0 ) ) ? m_objBudgetDoc.BudgetItem.BudgetGUID : System.Guid.Empty );
+
+                                List<ERP_Budget.Common.CUser> objFilteredUserList = ERP_Budget.Common.CBudgetDocEvent.GetBudgetDocEventUserList(m_objProfile,
+                                    BudgetDocEvent_Guid, BudgetDep_Guid, Budget_Guid, ref strErr);
+
+                                if ((objFilteredUserList != null) && (objFilteredUserList.Count > 0))
                                 {
-                                    // и ничего это не заплатка!
-                                    // я собираюсь отфильтровать список тех, кто может подтверждать
-                                    // пользователь должен иметь не только право на действие, но и входить 
-                                    // в список распорядителей бюджетного подразделения
-
-
-                                    //cboxEvent.Properties.Items.Add( objUser.UserLastName + " " + objUser.UserFirstName );
-
-
-                                    if (objRoutePoint.BudgetDocEvent.OrderNum == 1)
+                                    ERP_Budget.Common.CUser objSelectedUser = ((cboxEvent.SelectedItem != null) ? (ERP_Budget.Common.CUser)cboxEvent.SelectedItem : null);
+                                    if (objSelectedUser != null)
                                     {
-                                        if (m_objBudgetDoc.BudgetDep != null)
+                                        if (objFilteredUserList.SingleOrDefault<ERP_Budget.Common.CUser>(x => x.ulID == objSelectedUser.ulID) == null)
                                         {
-                                            // бюджетное подразделение определено и действие "подтвердить"
-                                            if (m_objBudgetDoc.BudgetDep.IsBudgetDepManager(objUser) == true)
-                                            {
-                                                cboxEvent.Properties.Items.Add(objUser.UserFullName);
-                                            }
+                                            cboxEvent.SelectedItem = null;
                                         }
                                     }
-                                    else
+
+                                    cboxEvent.Properties.Items.Clear();
+                                    cboxEvent.Properties.Items.AddRange(objFilteredUserList);
+
+                                }
+                                else
+                                {
+                                    foreach (ERP_Budget.Common.CUser objUser in objRoutePoint.BudgetDocEvent.UserList)
                                     {
-                                        if ((objRoutePoint.BudgetDocEvent.OrderNum == 2) && (m_objUserBudgetRightsList != null)
-                                            && (m_objUserBudgetRightsList.Count > 0) && (m_objBudgetDoc.BudgetDep != null) )
-                                        {
-                                            // бюджетное подразделение определено и действие "пройти контроль"
-                                            foreach (ERP_Budget.Common.CUserBudgetRights objUserBudgetRight in m_objUserBudgetRightsList)
-                                            {
-                                                if ((objUserBudgetRight.BudgetDep.uuidID.CompareTo(m_objBudgetDoc.BudgetDep.uuidID) == 0)
-                                                    && (objUserBudgetRight.DynamicRight.Name == ERP_Budget.Global.Consts.strDRInspector)
-                                                    && (objUserBudgetRight.User.ulUniXPID == objUser.ulUniXPID)
-                                                    && (objUserBudgetRight.Enable == true))
-                                                {
-                                                    cboxEvent.Properties.Items.Add(objUser.UserFullName);
-                                                    if ((cboxEvent.Text != "") && (cboxEvent.Text != objUser.UserFullName))
-                                                    {
-                                                        cboxEvent.Text = "";
-                                                    }
-                                                    break;
-                                                }
-                                            }
-                                        }
-                                        else
-                                        {
-                                            cboxEvent.Properties.Items.Add(objUser.UserFullName);
-                                        }
+                                        cboxEvent.Properties.Items.Add(objUser);
                                     }
                                 }
+                                
                             }
                         }
 
@@ -408,12 +404,15 @@ namespace ErpBudgetBudgetDoc
             {
                 if ((e.AcceptValue == true) && (sender != null))
                 {
-                    if (((System.String)e.Value) != ((DevExpress.XtraEditors.ComboBoxEdit)sender).Text)
+                    ERP_Budget.Common.CUser objCurrentUser = (( ((DevExpress.XtraEditors.ComboBoxEdit)sender).SelectedItem != null ) ? (ERP_Budget.Common.CUser)((DevExpress.XtraEditors.ComboBoxEdit)sender).SelectedItem : null);
+                    ERP_Budget.Common.CUser objNewUser = ( (e.Value != null ) ? (ERP_Budget.Common.CUser)e.Value : null);
+                    if (((objCurrentUser == null) && (objNewUser != null)) ||
+                        ((objCurrentUser != null) && (objNewUser != null) && (objNewUser.ulID != objCurrentUser.ulID)))
                     {
                         // значение  изменилось
                         // у выбранной точки маршрута в списке пользователей объекта "Действие"  найдем нужного пользователя
                         ERP_Budget.Common.CRoutePoint objCurrentPoint = (ERP_Budget.Common.CRoutePoint)((DevExpress.XtraEditors.ComboBoxEdit)sender).Tag;
-                        objCurrentPoint.UserEvent = objCurrentPoint.BudgetDocEvent.GetUserByName((System.String)e.Value);
+                        objCurrentPoint.UserEvent = objNewUser;
 
                         // прописываем пользователей во всех точках маршрута заданной группы
                         SetUserForPointGroup(((ERP_Budget.Common.CRoutePoint)((DevExpress.XtraEditors.ComboBoxEdit)sender).Tag));

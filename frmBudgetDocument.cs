@@ -297,7 +297,7 @@ namespace ErpBudgetBudgetDoc
             {
                 m_objCtrlBudgetDocRoute = new uctrlBudgetDocRoute(m_objBudgetDoc, m_strMainDR, 
                     ERP_Budget.Common.CUserBudgetRights.GetUserBudgetRightsList(m_objProfile, null, 0), 
-                    m_objRouteTemplateList);
+                    m_objRouteTemplateList, m_objProfile);
 
                 if( m_objCtrlBudgetDocRoute != null )
                 {
