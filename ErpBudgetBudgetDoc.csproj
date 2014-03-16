@@ -1,0 +1,585 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{76CEE109-2D93-4EC6-AE86-7FF419481B6C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ErpBudgetBudgetDoc</RootNamespace>
+    <AssemblyName>ErpBudgetBudgetDoc</AssemblyName>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>UniXP.snk</AssemblyOriginatorKeyFile>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <PublishUrl>http://localhost/ErpBudgetBudgetDoc/</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>P:\IT отдел\UniXP\Dll\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>P:\IT отдел\UniXP\Dll\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Data.v7.2, Version=7.2.4.0, Culture=neutral, PublicKeyToken=9b171c9fd64da1d1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v7.2, Version=7.2.4.0, Culture=neutral, PublicKeyToken=9b171c9fd64da1d1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.XtraBars.v7.2, Version=7.2.4.0, Culture=neutral, PublicKeyToken=9b171c9fd64da1d1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v7.2, Version=7.2.4.0, Culture=neutral, PublicKeyToken=9b171c9fd64da1d1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.XtraGrid.v7.2, Version=7.2.4.0, Culture=neutral, PublicKeyToken=9b171c9fd64da1d1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.XtraLayout.v7.2, Version=7.2.4.0, Culture=neutral, PublicKeyToken=9b171c9fd64da1d1" />
+    <Reference Include="DevExpress.XtraPrinting.v7.2, Version=7.2.4.0, Culture=neutral, PublicKeyToken=9b171c9fd64da1d1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.XtraTreeList.v7.2, Version=7.2.4.0, Culture=neutral, PublicKeyToken=9b171c9fd64da1d1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="ERP_Budget.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7483d705c8cfb03e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>P:\IT отдел\UniXP\Options Dll\ERP_Budget.Common.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="ERP_Budget.Global, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7483d705c8cfb03e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>P:\IT отдел\UniXP\Options Dll\ERP_Budget.Global.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Services, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\WINDOWS\assembly\GAC_MSIL\System.Web.Services\2.0.0.0__b03f5f7f11d50a3a\System.Web.Services.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UniXP.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7483d705c8cfb03e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>P:\IT отдел\UniXP\UniXP.Common.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CBudgetDocModuleInfo.cs" />
+    <Compile Include="dsPrint.cs">
+      <DependentUpon>dsPrint.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="dsPrint.designer.cs">
+      <DependentUpon>dsPrint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dsPrint1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsPrint.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="EventsClass.cs" />
+    <Compile Include="frmAccTrnList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAccTrnList.Designer.cs">
+      <DependentUpon>frmAccTrnList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmBudgetDocList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBudgetDocList.Designer.cs">
+      <DependentUpon>frmBudgetDocList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmBudgetDocListManage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBudgetDocListManage.Designer.cs">
+      <DependentUpon>frmBudgetDocListManage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmBudgetDocument.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBudgetDocument.Designer.cs">
+      <DependentUpon>frmBudgetDocument.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmBudgetItemDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBudgetItemDetail.designer.cs">
+      <DependentUpon>frmBudgetItemDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmChangeDate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmChangeDate.Designer.cs">
+      <DependentUpon>frmChangeDate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmChangeDocType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmChangeDocType.Designer.cs">
+      <DependentUpon>frmChangeDocType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDebitArticleEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDebitArticleEditor.designer.cs">
+      <DependentUpon>frmDebitArticleEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDocStateHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDocStateHistory.designer.cs">
+      <DependentUpon>frmDocStateHistory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFind.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFind.designer.cs">
+      <DependentUpon>frmFind.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPaymentBudgetDocList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPaymentBudgetDocList.Designer.cs">
+      <DependentUpon>frmPaymentBudgetDocList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPrintBudgetDoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPrintBudgetDoc.Designer.cs">
+      <DependentUpon>frmPrintBudgetDoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUserComment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUserComment.Designer.cs">
+      <DependentUpon>frmUserComment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IBudgetDocDemand.cs" />
+    <Compile Include="IBudgetDocEvent.cs" />
+    <Compile Include="IBudgetDocRoute.cs" />
+    <Compile Include="IBudgetDocType.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="uctrlBudgetDocBackMoney.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="uctrlBudgetDocBackMoney.Designer.cs">
+      <DependentUpon>uctrlBudgetDocBackMoney.cs</DependentUpon>
+    </Compile>
+    <Compile Include="uctrlBudgetDocChangeBudgetItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="uctrlBudgetDocChangeBudgetItem.designer.cs">
+      <DependentUpon>uctrlBudgetDocChangeBudgetItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="uctrlBudgetDocDemand.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="uctrlBudgetDocDemand.Designer.cs">
+      <DependentUpon>uctrlBudgetDocDemand.cs</DependentUpon>
+    </Compile>
+    <Compile Include="uctrlBudgetDocEvent.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="uctrlBudgetDocEvent.Designer.cs">
+      <DependentUpon>uctrlBudgetDocEvent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="uctrlBudgetDocRoute.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="uctrlBudgetDocRoute.Designer.cs">
+      <DependentUpon>uctrlBudgetDocRoute.cs</DependentUpon>
+    </Compile>
+    <Compile Include="uctrlBudgetDocType.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="uctrlBudgetDocType.Designer.cs">
+      <DependentUpon>uctrlBudgetDocType.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="UniXP.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="frmAccTrnList.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmAccTrnList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBudgetDocList.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmBudgetDocList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBudgetDocListManage.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmBudgetDocListManage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBudgetDocument.resx">
+      <DependentUpon>frmBudgetDocument.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBudgetItemDetail.resx">
+      <DependentUpon>frmBudgetItemDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmChangeDate.resx">
+      <DependentUpon>frmChangeDate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmChangeDocType.resx">
+      <DependentUpon>frmChangeDocType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDebitArticleEditor.resx">
+      <DependentUpon>frmDebitArticleEditor.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDocStateHistory.resx">
+      <DependentUpon>frmDocStateHistory.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFind.resx">
+      <DependentUpon>frmFind.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPaymentBudgetDocList.resx">
+      <DependentUpon>frmPaymentBudgetDocList.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPrintBudgetDoc.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmPrintBudgetDoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUserComment.resx">
+      <DependentUpon>frmUserComment.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <SubType>Designer</SubType>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="uctrlBudgetDocBackMoney.resx">
+      <DependentUpon>uctrlBudgetDocBackMoney.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="uctrlBudgetDocChangeBudgetItem.resx">
+      <DependentUpon>uctrlBudgetDocChangeBudgetItem.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="uctrlBudgetDocDemand.resx">
+      <DependentUpon>uctrlBudgetDocDemand.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="uctrlBudgetDocEvent.resx">
+      <DependentUpon>uctrlBudgetDocEvent.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="uctrlBudgetDocRoute.resx">
+      <DependentUpon>uctrlBudgetDocRoute.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="uctrlBudgetDocType.resx">
+      <DependentUpon>uctrlBudgetDocType.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\disk_blue_ok.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\printer2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\refresh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\undo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IMAGES_BUDGETDOCLISTSMALL_PNG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IMAGES_BUDGETDEPSMALL_PNG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IMAGES_BUDGETDOC.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IMAGES_BUDGETDOCLIST.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IMAGES_BUDGETDOCSMALL_PNG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IMAGES_BUDGETDOCSMALL.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IMAGES_BUDGETDOCLISTSMALL.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mail_write.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mail_add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mail_delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mail_exchange.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mail_find.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mail_lock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mail_new.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mail_preferences.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mail_view.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mail2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\branch_element.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\branch_element_new.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\branch_delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\brush3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\about.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\text_rich_small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\text_normal_small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\text_ok_small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\text_rich_colored_small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\text_rich_colored.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\text_normal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\text_ok.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\text_rich.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\check.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\nav_left_red.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\unknown.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\checks.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\check2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\warning.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\help2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\information.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\warning_24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\nav_left_green.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\text_rich_marked.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{967B4E0D-AD0C-4609-AB67-0FA40C0206D8}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\navigate_right2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\text_tree_.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\document_zoom_in.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\progress.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\loading.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clock_stop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="dsPrint.xsc">
+      <DependentUpon>dsPrint.xsd</DependentUpon>
+    </None>
+    <None Include="dsPrint.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsPrint1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dsPrint.xss">
+      <DependentUpon>dsPrint.xsd</DependentUpon>
+    </None>
+    <None Include="Resources\clock_run.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\konv4.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\paperclip.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\attach_16_d.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\jar_add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\flag_none.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\message.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\message_edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\message_add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\message_delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\balance_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\balance_delete_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\balance_ok_16.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
