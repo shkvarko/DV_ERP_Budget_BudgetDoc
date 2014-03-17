@@ -180,12 +180,15 @@ namespace ErpBudgetBudgetDoc
                     this.Invoke(m_SendMessageToLogDelegate, new Object[] { "Не удалось загрузить список переменных, влияющих на выбор маршрута. Обратитесь к разработчику!" });
                 }
 
-                // список условий выбора маршрута
-                m_objRouteTemplateList = ERP_Budget.Common.CRouteCondition.GetRouteConditionList(m_objProfile);
-                if ((m_objRouteTemplateList == null) || (m_objRouteTemplateList.Count == 0))
-                {
-                    this.Invoke(m_SendMessageToLogDelegate, new Object[] { "Не удалось загрузить список условий выбора маршрута. Обратитесь к разработчику!" });
-                }
+                // 2014.03.17
+                // шаблоны маршрутов с условиями выбора должны быть загружены ДО создания заявки
+                // поэтому формирование списка маршрутов изъято из потока
+                //// список условий выбора маршрута
+                //m_objRouteTemplateList = ERP_Budget.Common.CRouteCondition.GetRouteConditionList(m_objProfile);
+                //if ((m_objRouteTemplateList == null) || (m_objRouteTemplateList.Count == 0))
+                //{
+                //    this.Invoke(m_SendMessageToLogDelegate, new Object[] { "Не удалось загрузить список условий выбора маршрута. Обратитесь к разработчику!" });
+                //}
 
                 // список переменных, влияющих на выбор типа документа
                 m_objDocTypeVariableList = ERP_Budget.Common.CBudgetDocTypeVariable.GetDocTypeVariableList(m_objProfile);
@@ -1588,8 +1591,15 @@ namespace ErpBudgetBudgetDoc
         {
             try
             {
+                
                 // инициализация делегата для записи сообщений в журнал
                 m_SendMessageToLogDelegate = new SendMessageToLogDelegate(SendMessageToLog);
+                // список условий выбора маршрута
+                m_objRouteTemplateList = ERP_Budget.Common.CRouteCondition.GetRouteConditionList(m_objProfile);
+                if ((m_objRouteTemplateList == null) || (m_objRouteTemplateList.Count == 0))
+                {
+                    this.Invoke(m_SendMessageToLogDelegate, new Object[] { "Не удалось загрузить список условий выбора маршрута. Обратитесь к разработчику!" });
+                }
 
                 // запуск потока по загрузке переменных, влияющих на выбор маршрута
                 this.ThreadInitializeVariable = new System.Threading.Thread(InitializeVariableInThread);

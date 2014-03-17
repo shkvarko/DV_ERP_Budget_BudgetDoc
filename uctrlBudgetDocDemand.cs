@@ -643,7 +643,7 @@ namespace ErpBudgetBudgetDoc
             {
                 // Службы
                 cboxBudgetDep.Properties.Items.Clear();
-                List<ERP_Budget.Common.CBudgetDep> objBudgetDepList = ERP_Budget.Common.CBudgetDep.GetBudgetDepsListForBudgetDoc( m_objProfile );
+                List<ERP_Budget.Common.CBudgetDep> objBudgetDepList = ERP_Budget.Common.CBudgetDep.GetBudgetDepsListForBudgetDoc( m_objProfile, false, false );
                 if ((objBudgetDepList != null) && (objBudgetDepList.Count > 0))
                 {
                     cboxBudgetDep.Properties.Items.AddRange(objBudgetDepList);
@@ -1030,52 +1030,24 @@ namespace ErpBudgetBudgetDoc
                 m_objBudgetDoc.Date = dtDocDate.DateTime;
                 m_objBudgetDoc.PaymentDate = dtDocPaymentDate.DateTime;
                 // компания
-                if (m_objBudgetDoc.Company != null)
+                if( (m_objBudgetDoc.Company != null) && (cboxCompany.Properties.Items.Count > 0 ) )
                 {
-                    foreach (object objCompany in cboxCompany.Properties.Items)
-                    {
-                        if (((ERP_Budget.Common.CCompany)objCompany).uuidID == m_objBudgetDoc.Company.uuidID)
-                        {
-                            cboxCompany.SelectedItem = objCompany;
-                            break;
-                        }
-                    }
+                    cboxCompany.SelectedItem = (cboxCompany.Properties.Items.Cast<CCompany>().SingleOrDefault<CCompany>(x=>x.uuidID.CompareTo(m_objBudgetDoc.Company.uuidID) == 0) );
                 }
                 // форма оплаты
-                if (m_objBudgetDoc.PaymentType != null)
+                if( (m_objBudgetDoc.PaymentType != null) && (cboxPaymentType.Properties.Items.Count > 0 ) )
                 {
-                    foreach (object objPaymentType in cboxPaymentType.Properties.Items)
-                    {
-                        if (((ERP_Budget.Common.CPaymentType)objPaymentType).uuidID == m_objBudgetDoc.PaymentType.uuidID)
-                        {
-                            cboxPaymentType.SelectedItem = objPaymentType;
-                            break;
-                        }
-                    }
+                    cboxPaymentType.SelectedItem = (cboxPaymentType.Properties.Items.Cast<CPaymentType>().SingleOrDefault<CPaymentType>(x => x.uuidID.CompareTo(m_objBudgetDoc.PaymentType.uuidID) == 0));
                 }
                 // бюджетное подразделение
-                if( m_objBudgetDoc.BudgetDep != null )
+                if( ( m_objBudgetDoc.BudgetDep != null ) && ( cboxBudgetDep.Properties.Items.Count > 0 ) )
                 {
-                    foreach (object objBudgetDep in cboxBudgetDep.Properties.Items)
-                    {
-                        if (((ERP_Budget.Common.CBudgetDep)objBudgetDep).uuidID == m_objBudgetDoc.BudgetDep.uuidID)
-                        {
-                            cboxBudgetDep.SelectedItem = objBudgetDep;
-                            break;
-                        }
-                    }
+                    cboxBudgetDep.SelectedItem = (cboxBudgetDep.Properties.Items.Cast<CBudgetDep>().SingleOrDefault<CBudgetDep>(x => x.uuidID.CompareTo(m_objBudgetDoc.BudgetDep.uuidID) == 0));
                 }
                 // валюта
-                if (m_objBudgetDoc.Currency != null)
+                if( ( m_objBudgetDoc.Currency != null ) && ( cboxCurrency.Properties.Items.Count > 0 ) )
                 {
-                    foreach (object objCurrency in cboxCurrency.Properties.Items)
-                    {
-                        if (((ERP_Budget.Common.CCurrency)objCurrency).uuidID == m_objBudgetDoc.Currency.uuidID)
-                        {
-                            cboxCurrency.SelectedItem = objCurrency;
-                            break;
-                        }
-                    }
+                    cboxCurrency.SelectedItem = (cboxCurrency.Properties.Items.Cast<CCurrency>().SingleOrDefault<CCurrency>(x => x.uuidID.CompareTo(m_objBudgetDoc.Currency.uuidID) == 0 ));
                 }
                 if (objSrcBudgetDoc.BudgetItem != null)
                 {
