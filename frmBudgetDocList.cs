@@ -3747,7 +3747,8 @@ namespace ErpBudgetBudgetDoc
             {
                 using (frmChangeDate objfrmChangeDate = new frmChangeDate(m_objProfile))
                 {
-                    objfrmChangeDate.OpenForChangePaymentDate(objBudgetDoc, ERP_Budget.Common.CUser.GetUsersInfo(this.m_objProfile));
+                    objfrmChangeDate.OpenForChangePaymentDate(objBudgetDoc, 
+                        ERP_Budget.Common.CUser.GetUsersInfo(this.m_objProfile) );
                     if (objfrmChangeDate.DialogResult == DialogResult.OK)
                     {
                         DevExpress.XtraGrid.Views.Grid.GridView currGridView = GetGridViewBySelectedPage();

@@ -51,21 +51,31 @@
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.tabPageChangePaymentDate = new DevExpress.XtraTab.XtraTabPage();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.treeListPayments = new DevExpress.XtraTreeList.TreeList();
-            this.colPaymentDate = new DevExpress.XtraTreeList.Columns.TreeListColumn();
-            this.repositoryItemDateEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
-            this.colPaymentValue = new DevExpress.XtraTreeList.Columns.TreeListColumn();
-            this.colCurrency = new DevExpress.XtraTreeList.Columns.TreeListColumn();
-            this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.treeListPaymentsLog = new DevExpress.XtraTreeList.TreeList();
             this.colRecordUpdatedDateTime = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.colRecordUserUdpated = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.colPaymentDateOld = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.repositoryItemDateEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             this.colPaymentDateNew = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.colPaymentFactCurrencyOld = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.colPaymentFactCurrencyNew = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.colPaymentFactPaymentValueOld = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.repItemCalcEditPaymentFactValue = new DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit();
+            this.colPaymentFactPaymentValueNew = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.repItemComboBoxPaymentCurrency = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
+            this.treeListPayments = new DevExpress.XtraTreeList.TreeList();
+            this.colPaymentDate = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.repositoryItemDateEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
+            this.colPaymentValue = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.colCurrency = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.colFactCurrency = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.repItemComboBoxFactCurrency = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
+            this.colFactPaymentValue = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.repItemCalcEditFactPaymentValue = new DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit();
+            this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
             this.lblPayment = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabControl)).BeginInit();
@@ -85,12 +95,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.cboxPaymentType.Properties)).BeginInit();
             this.tabPageChangePaymentDate.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.treeListPayments)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1.VistaTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.treeListPaymentsLog)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit2.VistaTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repItemCalcEditPaymentFactValue)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repItemComboBoxPaymentCurrency)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.treeListPayments)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1.VistaTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repItemComboBoxFactCurrency)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repItemCalcEditFactPaymentValue)).BeginInit();
             this.tableLayoutPanel4.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -106,7 +120,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(576, 332);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(595, 388);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // tableLayoutPanel2
@@ -117,17 +131,17 @@
             this.tableLayoutPanel2.Controls.Add(this.btnOk, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.btnCancel, 1, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 301);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 357);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(570, 28);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(589, 28);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
             // btnOk
             // 
             this.btnOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOk.Location = new System.Drawing.Point(416, 4);
+            this.btnOk.Location = new System.Drawing.Point(435, 4);
             this.btnOk.Margin = new System.Windows.Forms.Padding(1);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(75, 23);
@@ -138,7 +152,7 @@
             // btnCancel
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancel.Location = new System.Drawing.Point(494, 4);
+            this.btnCancel.Location = new System.Drawing.Point(513, 4);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(1);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
@@ -152,7 +166,7 @@
             this.tabControl.Location = new System.Drawing.Point(3, 3);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedTabPage = this.tabPageChangeDate;
-            this.tabControl.Size = new System.Drawing.Size(570, 292);
+            this.tabControl.Size = new System.Drawing.Size(589, 348);
             this.tabControl.TabIndex = 2;
             this.tabControl.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.tabPageChangeDate,
@@ -333,7 +347,7 @@
             // 
             this.tabPageChangePaymentDate.Controls.Add(this.tableLayoutPanel3);
             this.tabPageChangePaymentDate.Name = "tabPageChangePaymentDate";
-            this.tabPageChangePaymentDate.Size = new System.Drawing.Size(561, 261);
+            this.tabPageChangePaymentDate.Size = new System.Drawing.Size(580, 317);
             this.tabPageChangePaymentDate.Text = "Дата оплаты";
             // 
             // tableLayoutPanel3
@@ -349,83 +363,11 @@
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 4;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 18F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 22F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 96F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(561, 261);
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(580, 317);
             this.tableLayoutPanel3.TabIndex = 0;
-            // 
-            // treeListPayments
-            // 
-            this.treeListPayments.Columns.AddRange(new DevExpress.XtraTreeList.Columns.TreeListColumn[] {
-            this.colPaymentDate,
-            this.colPaymentValue,
-            this.colCurrency});
-            this.treeListPayments.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeListPayments.Location = new System.Drawing.Point(3, 21);
-            this.treeListPayments.Name = "treeListPayments";
-            this.treeListPayments.OptionsView.ShowSummaryFooter = true;
-            this.treeListPayments.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemDateEdit1});
-            this.treeListPayments.Size = new System.Drawing.Size(555, 119);
-            this.treeListPayments.TabIndex = 3;
-            this.treeListPayments.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.treeListPayments_FocusedNodeChanged);
-            // 
-            // colPaymentDate
-            // 
-            this.colPaymentDate.Caption = "Дата платежа";
-            this.colPaymentDate.ColumnEdit = this.repositoryItemDateEdit1;
-            this.colPaymentDate.FieldName = "Дата платежа";
-            this.colPaymentDate.Name = "colPaymentDate";
-            this.colPaymentDate.Visible = true;
-            this.colPaymentDate.VisibleIndex = 0;
-            // 
-            // repositoryItemDateEdit1
-            // 
-            this.repositoryItemDateEdit1.AutoHeight = false;
-            this.repositoryItemDateEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemDateEdit1.Name = "repositoryItemDateEdit1";
-            this.repositoryItemDateEdit1.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton()});
-            // 
-            // colPaymentValue
-            // 
-            this.colPaymentValue.AppearanceCell.Options.UseTextOptions = true;
-            this.colPaymentValue.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            this.colPaymentValue.Caption = "Сумма платежа";
-            this.colPaymentValue.FieldName = "Сумма платежа";
-            this.colPaymentValue.Format.FormatString = "### ### ##0.00";
-            this.colPaymentValue.Format.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.colPaymentValue.Name = "colPaymentValue";
-            this.colPaymentValue.OptionsColumn.AllowEdit = false;
-            this.colPaymentValue.OptionsColumn.ReadOnly = true;
-            this.colPaymentValue.RowFooterSummary = DevExpress.XtraTreeList.SummaryItemType.Sum;
-            this.colPaymentValue.RowFooterSummaryStrFormat = "{0:### ### ##0.00}";
-            this.colPaymentValue.SummaryFooter = DevExpress.XtraTreeList.SummaryItemType.Sum;
-            this.colPaymentValue.SummaryFooterStrFormat = "{0:### ### ##0.00}";
-            this.colPaymentValue.Visible = true;
-            this.colPaymentValue.VisibleIndex = 1;
-            // 
-            // colCurrency
-            // 
-            this.colCurrency.Caption = "Валюта";
-            this.colCurrency.FieldName = "Валюта";
-            this.colCurrency.Name = "colCurrency";
-            this.colCurrency.OptionsColumn.AllowEdit = false;
-            this.colCurrency.OptionsColumn.ReadOnly = true;
-            this.colCurrency.Visible = true;
-            this.colCurrency.VisibleIndex = 2;
-            // 
-            // labelControl7
-            // 
-            this.labelControl7.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.labelControl7.Location = new System.Drawing.Point(3, 3);
-            this.labelControl7.Name = "labelControl7";
-            this.labelControl7.Size = new System.Drawing.Size(115, 13);
-            this.labelControl7.TabIndex = 0;
-            this.labelControl7.Text = "Проведенные оплаты:";
             // 
             // treeListPaymentsLog
             // 
@@ -433,13 +375,20 @@
             this.colRecordUpdatedDateTime,
             this.colRecordUserUdpated,
             this.colPaymentDateOld,
-            this.colPaymentDateNew});
+            this.colPaymentDateNew,
+            this.colPaymentFactCurrencyOld,
+            this.colPaymentFactCurrencyNew,
+            this.colPaymentFactPaymentValueOld,
+            this.colPaymentFactPaymentValueNew});
             this.treeListPaymentsLog.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeListPaymentsLog.Location = new System.Drawing.Point(3, 168);
+            this.treeListPaymentsLog.Location = new System.Drawing.Point(3, 181);
             this.treeListPaymentsLog.Name = "treeListPaymentsLog";
+            this.treeListPaymentsLog.OptionsView.AutoWidth = false;
             this.treeListPaymentsLog.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemDateEdit2});
-            this.treeListPaymentsLog.Size = new System.Drawing.Size(555, 90);
+            this.repositoryItemDateEdit2,
+            this.repItemComboBoxPaymentCurrency,
+            this.repItemCalcEditPaymentFactValue});
+            this.treeListPaymentsLog.Size = new System.Drawing.Size(574, 133);
             this.treeListPaymentsLog.TabIndex = 4;
             // 
             // colRecordUpdatedDateTime
@@ -510,6 +459,191 @@
             this.colPaymentDateNew.VisibleIndex = 3;
             this.colPaymentDateNew.Width = 165;
             // 
+            // colPaymentFactCurrencyOld
+            // 
+            this.colPaymentFactCurrencyOld.Caption = "Валюта факт. (ДО)";
+            this.colPaymentFactCurrencyOld.FieldName = "Валюта факт. (ДО)";
+            this.colPaymentFactCurrencyOld.Name = "colPaymentFactCurrencyOld";
+            this.colPaymentFactCurrencyOld.OptionsColumn.AllowEdit = false;
+            this.colPaymentFactCurrencyOld.OptionsColumn.AllowFocus = false;
+            this.colPaymentFactCurrencyOld.OptionsColumn.AllowMove = false;
+            this.colPaymentFactCurrencyOld.OptionsColumn.AllowSort = false;
+            this.colPaymentFactCurrencyOld.OptionsColumn.ReadOnly = true;
+            this.colPaymentFactCurrencyOld.Visible = true;
+            this.colPaymentFactCurrencyOld.VisibleIndex = 4;
+            this.colPaymentFactCurrencyOld.Width = 120;
+            // 
+            // colPaymentFactCurrencyNew
+            // 
+            this.colPaymentFactCurrencyNew.Caption = "Валюта факт. (ПОСЛЕ)";
+            this.colPaymentFactCurrencyNew.FieldName = "Валюта факт. (ПОСЛЕ)";
+            this.colPaymentFactCurrencyNew.Name = "colPaymentFactCurrencyNew";
+            this.colPaymentFactCurrencyNew.OptionsColumn.AllowEdit = false;
+            this.colPaymentFactCurrencyNew.OptionsColumn.AllowFocus = false;
+            this.colPaymentFactCurrencyNew.OptionsColumn.AllowMove = false;
+            this.colPaymentFactCurrencyNew.OptionsColumn.AllowSort = false;
+            this.colPaymentFactCurrencyNew.OptionsColumn.ReadOnly = true;
+            this.colPaymentFactCurrencyNew.Visible = true;
+            this.colPaymentFactCurrencyNew.VisibleIndex = 5;
+            this.colPaymentFactCurrencyNew.Width = 145;
+            // 
+            // colPaymentFactPaymentValueOld
+            // 
+            this.colPaymentFactPaymentValueOld.Caption = "Сумма факт. (ДО)";
+            this.colPaymentFactPaymentValueOld.ColumnEdit = this.repItemCalcEditPaymentFactValue;
+            this.colPaymentFactPaymentValueOld.FieldName = "Сумма факт. (ДО)";
+            this.colPaymentFactPaymentValueOld.Name = "colPaymentFactPaymentValueOld";
+            this.colPaymentFactPaymentValueOld.OptionsColumn.AllowEdit = false;
+            this.colPaymentFactPaymentValueOld.OptionsColumn.AllowFocus = false;
+            this.colPaymentFactPaymentValueOld.OptionsColumn.AllowMove = false;
+            this.colPaymentFactPaymentValueOld.OptionsColumn.AllowSort = false;
+            this.colPaymentFactPaymentValueOld.OptionsColumn.ReadOnly = true;
+            this.colPaymentFactPaymentValueOld.Visible = true;
+            this.colPaymentFactPaymentValueOld.VisibleIndex = 6;
+            this.colPaymentFactPaymentValueOld.Width = 115;
+            // 
+            // repItemCalcEditPaymentFactValue
+            // 
+            this.repItemCalcEditPaymentFactValue.AutoHeight = false;
+            this.repItemCalcEditPaymentFactValue.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repItemCalcEditPaymentFactValue.DisplayFormat.FormatString = "{0:### ### ### ##0.00}";
+            this.repItemCalcEditPaymentFactValue.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.repItemCalcEditPaymentFactValue.Name = "repItemCalcEditPaymentFactValue";
+            // 
+            // colPaymentFactPaymentValueNew
+            // 
+            this.colPaymentFactPaymentValueNew.Caption = "Сумма факт. (ПОСЛЕ)";
+            this.colPaymentFactPaymentValueNew.ColumnEdit = this.repItemCalcEditPaymentFactValue;
+            this.colPaymentFactPaymentValueNew.FieldName = "Сумма факт. (ПОСЛЕ)";
+            this.colPaymentFactPaymentValueNew.Name = "colPaymentFactPaymentValueNew";
+            this.colPaymentFactPaymentValueNew.OptionsColumn.AllowEdit = false;
+            this.colPaymentFactPaymentValueNew.OptionsColumn.AllowFocus = false;
+            this.colPaymentFactPaymentValueNew.OptionsColumn.AllowMove = false;
+            this.colPaymentFactPaymentValueNew.OptionsColumn.AllowSort = false;
+            this.colPaymentFactPaymentValueNew.OptionsColumn.ReadOnly = true;
+            this.colPaymentFactPaymentValueNew.Visible = true;
+            this.colPaymentFactPaymentValueNew.VisibleIndex = 7;
+            this.colPaymentFactPaymentValueNew.Width = 115;
+            // 
+            // repItemComboBoxPaymentCurrency
+            // 
+            this.repItemComboBoxPaymentCurrency.AutoHeight = false;
+            this.repItemComboBoxPaymentCurrency.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repItemComboBoxPaymentCurrency.Name = "repItemComboBoxPaymentCurrency";
+            // 
+            // treeListPayments
+            // 
+            this.treeListPayments.Columns.AddRange(new DevExpress.XtraTreeList.Columns.TreeListColumn[] {
+            this.colPaymentDate,
+            this.colPaymentValue,
+            this.colCurrency,
+            this.colFactCurrency,
+            this.colFactPaymentValue});
+            this.treeListPayments.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeListPayments.Location = new System.Drawing.Point(3, 21);
+            this.treeListPayments.Name = "treeListPayments";
+            this.treeListPayments.OptionsView.ShowSummaryFooter = true;
+            this.treeListPayments.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemDateEdit1,
+            this.repItemComboBoxFactCurrency,
+            this.repItemCalcEditFactPaymentValue});
+            this.treeListPayments.Size = new System.Drawing.Size(574, 132);
+            this.treeListPayments.TabIndex = 3;
+            this.treeListPayments.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.treeListPayments_FocusedNodeChanged);
+            // 
+            // colPaymentDate
+            // 
+            this.colPaymentDate.Caption = "Дата платежа";
+            this.colPaymentDate.ColumnEdit = this.repositoryItemDateEdit1;
+            this.colPaymentDate.FieldName = "Дата платежа";
+            this.colPaymentDate.Name = "colPaymentDate";
+            this.colPaymentDate.Visible = true;
+            this.colPaymentDate.VisibleIndex = 0;
+            // 
+            // repositoryItemDateEdit1
+            // 
+            this.repositoryItemDateEdit1.AutoHeight = false;
+            this.repositoryItemDateEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemDateEdit1.Name = "repositoryItemDateEdit1";
+            this.repositoryItemDateEdit1.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            // 
+            // colPaymentValue
+            // 
+            this.colPaymentValue.AppearanceCell.Options.UseTextOptions = true;
+            this.colPaymentValue.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.colPaymentValue.Caption = "Сумма платежа";
+            this.colPaymentValue.FieldName = "Сумма платежа";
+            this.colPaymentValue.Format.FormatString = "### ### ##0.00";
+            this.colPaymentValue.Format.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.colPaymentValue.Name = "colPaymentValue";
+            this.colPaymentValue.OptionsColumn.AllowEdit = false;
+            this.colPaymentValue.OptionsColumn.ReadOnly = true;
+            this.colPaymentValue.RowFooterSummary = DevExpress.XtraTreeList.SummaryItemType.Sum;
+            this.colPaymentValue.RowFooterSummaryStrFormat = "{0:### ### ##0.00}";
+            this.colPaymentValue.SummaryFooter = DevExpress.XtraTreeList.SummaryItemType.Sum;
+            this.colPaymentValue.SummaryFooterStrFormat = "{0:### ### ##0.00}";
+            this.colPaymentValue.Visible = true;
+            this.colPaymentValue.VisibleIndex = 1;
+            // 
+            // colCurrency
+            // 
+            this.colCurrency.Caption = "Валюта заявки";
+            this.colCurrency.FieldName = "Валюта";
+            this.colCurrency.Name = "colCurrency";
+            this.colCurrency.OptionsColumn.AllowEdit = false;
+            this.colCurrency.OptionsColumn.ReadOnly = true;
+            this.colCurrency.Visible = true;
+            this.colCurrency.VisibleIndex = 2;
+            // 
+            // colFactCurrency
+            // 
+            this.colFactCurrency.Caption = "По факту";
+            this.colFactCurrency.ColumnEdit = this.repItemComboBoxFactCurrency;
+            this.colFactCurrency.FieldName = "По факту";
+            this.colFactCurrency.Name = "colFactCurrency";
+            this.colFactCurrency.Visible = true;
+            this.colFactCurrency.VisibleIndex = 3;
+            // 
+            // repItemComboBoxFactCurrency
+            // 
+            this.repItemComboBoxFactCurrency.AutoHeight = false;
+            this.repItemComboBoxFactCurrency.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repItemComboBoxFactCurrency.Name = "repItemComboBoxFactCurrency";
+            // 
+            // colFactPaymentValue
+            // 
+            this.colFactPaymentValue.Caption = "На сумму";
+            this.colFactPaymentValue.ColumnEdit = this.repItemCalcEditFactPaymentValue;
+            this.colFactPaymentValue.FieldName = "На сумму";
+            this.colFactPaymentValue.Format.FormatString = "### ### ##0.00";
+            this.colFactPaymentValue.Format.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.colFactPaymentValue.Name = "colFactPaymentValue";
+            this.colFactPaymentValue.Visible = true;
+            this.colFactPaymentValue.VisibleIndex = 4;
+            // 
+            // repItemCalcEditFactPaymentValue
+            // 
+            this.repItemCalcEditFactPaymentValue.AutoHeight = false;
+            this.repItemCalcEditFactPaymentValue.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repItemCalcEditFactPaymentValue.DisplayFormat.FormatString = "### ### ##0.00";
+            this.repItemCalcEditFactPaymentValue.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.repItemCalcEditFactPaymentValue.Name = "repItemCalcEditFactPaymentValue";
+            // 
+            // labelControl7
+            // 
+            this.labelControl7.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelControl7.Location = new System.Drawing.Point(3, 3);
+            this.labelControl7.Name = "labelControl7";
+            this.labelControl7.Size = new System.Drawing.Size(115, 13);
+            this.labelControl7.TabIndex = 0;
+            this.labelControl7.Text = "Проведенные оплаты:";
+            // 
             // tableLayoutPanel4
             // 
             this.tableLayoutPanel4.ColumnCount = 2;
@@ -518,22 +652,13 @@
             this.tableLayoutPanel4.Controls.Add(this.lblPayment, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.labelControl8, 0, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 143);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 156);
             this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(561, 22);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(580, 22);
             this.tableLayoutPanel4.TabIndex = 5;
-            // 
-            // labelControl8
-            // 
-            this.labelControl8.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.labelControl8.Location = new System.Drawing.Point(3, 4);
-            this.labelControl8.Name = "labelControl8";
-            this.labelControl8.Size = new System.Drawing.Size(141, 13);
-            this.labelControl8.TabIndex = 6;
-            this.labelControl8.Text = "Журнал изменений оплаты:";
             // 
             // lblPayment
             // 
@@ -544,14 +669,23 @@
             this.lblPayment.TabIndex = 7;
             this.lblPayment.Text = "сумма";
             // 
+            // labelControl8
+            // 
+            this.labelControl8.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelControl8.Location = new System.Drawing.Point(3, 4);
+            this.labelControl8.Name = "labelControl8";
+            this.labelControl8.Size = new System.Drawing.Size(141, 13);
+            this.labelControl8.TabIndex = 6;
+            this.labelControl8.Text = "Журнал изменений оплаты:";
+            // 
             // frmChangeDate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(576, 332);
+            this.ClientSize = new System.Drawing.Size(595, 388);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(500, 300);
             this.Name = "frmChangeDate";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Изменить дату документа";
@@ -579,12 +713,16 @@
             this.tabPageChangePaymentDate.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.treeListPayments)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1.VistaTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.treeListPaymentsLog)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit2.VistaTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repItemCalcEditPaymentFactValue)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repItemComboBoxPaymentCurrency)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.treeListPayments)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1.VistaTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repItemComboBoxFactCurrency)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repItemCalcEditFactPaymentValue)).EndInit();
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
             this.ResumeLayout(false);
@@ -631,5 +769,15 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private DevExpress.XtraEditors.LabelControl lblPayment;
         private DevExpress.XtraEditors.LabelControl labelControl8;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn colFactCurrency;
+        private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repItemComboBoxFactCurrency;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn colFactPaymentValue;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit repItemCalcEditFactPaymentValue;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn colPaymentFactCurrencyOld;
+        private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repItemComboBoxPaymentCurrency;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn colPaymentFactCurrencyNew;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn colPaymentFactPaymentValueOld;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit repItemCalcEditPaymentFactValue;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn colPaymentFactPaymentValueNew;
     }
 }

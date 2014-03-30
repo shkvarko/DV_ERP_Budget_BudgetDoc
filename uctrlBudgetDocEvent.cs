@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Data;
 using System.Text;
 using System.Windows.Forms;
+using System.Linq;
 
 namespace ErpBudgetBudgetDoc
 {
@@ -15,9 +16,9 @@ namespace ErpBudgetBudgetDoc
         /// Список возможных действий
         /// </summary>
         List<ERP_Budget.Common.CBudgetDocEvent> m_objDocEventList;
-        private System.String m_strCanShow = ">>";
-        private System.String m_strCanHide = "<<";
-        private const System.Int32 m_iCalcWidth = 120;
+        private const System.String m_strCanShow = ">>";
+        private const System.String m_strCanHide = "<<";
+        private const System.Int32 m_iCalcWidth = 313;
         public double EventMoney
         {
             get { return System.Convert.ToDouble(calcEventMoney.Value); }
@@ -95,6 +96,8 @@ namespace ErpBudgetBudgetDoc
                 {
                     tableLayoutPanel.ColumnStyles[1].Width = (objBudgetDocEvent.IsShowMoney == true) ? m_iCalcWidth : 0;
                     calcEventMoney.Properties.ReadOnly = !(objBudgetDocEvent.IsCanChanhgeMoney);
+                    calcEventFactMoney.Properties.ReadOnly = calcEventMoney.Properties.ReadOnly;
+                    cboxFactCurrency.Properties.ReadOnly = calcEventMoney.Properties.ReadOnly;
                     calcEventMoney.ToolTip = "Укажите сумму для выбранного действия: \"" + objBudgetDocEvent.Name + "\"";
                 }
                 
@@ -265,6 +268,8 @@ namespace ErpBudgetBudgetDoc
         {
             try
             {
+                cboxFactCurrency.SelectedItem = null;
+                cboxFactCurrency.Properties.Items.Clear();
                 // структура маршрута
                 rgrDocEvent.Properties.Items.Clear();
                 if ((objRoutePointList == null) || (objRoutePointList.Count == 0)) { return; }
@@ -322,6 +327,22 @@ namespace ErpBudgetBudgetDoc
 
                 decimal CalcValue = new decimal((m_BudgetDocMoney - m_BudgetDocMoneyPayment));
                 calcEventMoney.Value = CalcValue;
+
+                if (objBudgetDoc != null)
+                {
+                    List<ERP_Budget.Common.CCurrency> objCurrencyList = ERP_Budget.Common.CCurrency.GetCurrencyList(objProfile);
+                    if ((objCurrencyList != null) && (objCurrencyList.Count > 0))
+                    {
+                        cboxFactCurrency.Properties.Items.AddRange(objCurrencyList);
+                    }
+                    objCurrencyList = null;
+
+                    if (objBudgetDoc.Currency != null)
+                    {
+                        cboxFactCurrency.SelectedItem = cboxFactCurrency.Properties.Items.Cast<ERP_Budget.Common.CCurrency>().SingleOrDefault<ERP_Budget.Common.CCurrency>(x => x.uuidID.CompareTo(objBudgetDoc.Currency.uuidID) == 0);
+                        calcEventFactMoney.Value = calcEventMoney.Value;
+                    }
+                }
                 
                 rgrDocEvent.Properties.Columns = rgrDocEvent.Properties.Items.Count;
                 if (rgrDocEvent.Properties.Items.Count == 1) { rgrDocEvent.SelectedIndex = 0; }
@@ -357,6 +378,8 @@ namespace ErpBudgetBudgetDoc
                 {
                     objDocEvent = m_objDocEventList[rgrDocEvent.SelectedIndex];
                     objDocEvent.EventMoney = ( ( objDocEvent.IsShowMoney == true ) && ( objDocEvent.IsCanChanhgeMoney == true ) ) ? System.Convert.ToDouble(calcEventMoney.Value) : 0;
+                    objDocEvent.EventFactMoney = ((objDocEvent.IsShowMoney == true) && (objDocEvent.IsCanChanhgeMoney == true)) ? System.Convert.ToDouble( calcEventFactMoney.Value) : 0;
+                    objDocEvent.EventFactCurrency = ((objDocEvent.IsShowMoney == true) && (objDocEvent.IsCanChanhgeMoney == true) && (cboxFactCurrency.SelectedItem != null)) ? (ERP_Budget.Common.CCurrency)cboxFactCurrency.SelectedItem : null;
                 }
             }
             catch (System.Exception f)
@@ -423,6 +446,8 @@ namespace ErpBudgetBudgetDoc
             }
         }
 
+        #region Обработчики изменений в элементах с суммами
+
         private void calcEventMoney_EditValueChanging(object sender, DevExpress.XtraEditors.Controls.ChangingEventArgs e)
         {
             try
@@ -441,12 +466,44 @@ namespace ErpBudgetBudgetDoc
             finally
             {
             }
+            return;
         }
 
         private void calcEventMoney_EditValueChanged(object sender, EventArgs e)
         {
             SimulateChangeDocEven();
         }
+
+        private void calcEventFactMoney_EditValueChanged(object sender, EventArgs e)
+        {
+            SimulateChangeDocEven();
+        }
+
+        private void calcEventFactMoney_EditValueChanging(object sender, DevExpress.XtraEditors.Controls.ChangingEventArgs e)
+        {
+            try
+            {
+                if (e.NewValue != null)
+                {
+                    e.Cancel = (System.Convert.ToDecimal(e.NewValue) <= 0 );
+                }
+            }
+            catch (System.Exception f)
+            {
+                DevExpress.XtraEditors.XtraMessageBox.Show(
+                "calcEventFactMoney_EditValueChanging.\n\nТекст ошибки: " + f.Message, "Внимание",
+                System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+            }
+            finally
+            {
+            }
+            return;
+        }
+        private void cboxFactCurrency_SelectedValueChanged(object sender, EventArgs e)
+        {
+            SimulateChangeDocEven();
+        }
+        #endregion
 
     }
 

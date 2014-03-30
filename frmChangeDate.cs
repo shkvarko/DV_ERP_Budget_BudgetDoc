@@ -27,6 +27,7 @@ namespace ErpBudgetBudgetDoc
         private UniXP.Common.CProfile m_objProfile;
         private enumChahgedObjectType m_enChahgedObjectType;
         List<CBudgetDocPaymentItemArjive> m_objPaymentsListArjive;
+        List<CCurrency> m_objCurrencyList;
         #endregion
 
         #region Конструктор
@@ -34,6 +35,7 @@ namespace ErpBudgetBudgetDoc
         {
             m_objBudgetDoc = null;
             m_objCurrentUser = null;
+            m_objCurrencyList = null;
             m_objProfile = objProfile;
             m_enChahgedObjectType = enumChahgedObjectType.Unkown;
             
@@ -273,7 +275,8 @@ namespace ErpBudgetBudgetDoc
         /// </summary>
         /// <param name="objBudgetDoc">бюджетный документ</param>
         /// <param name="objCurrentUser">пользователь</param>
-        public void OpenForChangePaymentDate(ERP_Budget.Common.CBudgetDoc objBudgetDoc, ERP_Budget.Common.CUser objCurrentUser)
+        public void OpenForChangePaymentDate(ERP_Budget.Common.CBudgetDoc objBudgetDoc, 
+            ERP_Budget.Common.CUser objCurrentUser  )
         {
             try
             {
@@ -284,6 +287,17 @@ namespace ErpBudgetBudgetDoc
                 m_enChahgedObjectType = enumChahgedObjectType.PaymentDate;
 
                 treeListPayments.Nodes.Clear();
+
+                repItemComboBoxFactCurrency.Items.Clear();
+                if (m_objCurrencyList == null)
+                {
+                    m_objCurrencyList = CCurrency.GetCurrencyList(m_objProfile);
+                }
+                if (m_objCurrencyList != null)
+                {
+                    repItemComboBoxFactCurrency.Items.AddRange(m_objCurrencyList);
+                }
+
                 System.String strErr = System.String.Empty;
 
                 List<CBudgetDocPaymentItem> objPaymentsList = CBudgetDocPaymentItem.GetBudgetDocPaymentItemList(m_objProfile, m_objBudgetDoc.uuidID, null, ref strErr);
@@ -293,7 +307,8 @@ namespace ErpBudgetBudgetDoc
                     foreach (CBudgetDocPaymentItem objPaymentItem in objPaymentsList)
                     {
                         treeListPayments.AppendNode(new object[] { objPaymentItem.PaymentDate, objPaymentItem.PaymentValue, 
-                            ( ( objPaymentItem.Currency != null ) ? objPaymentItem.Currency.CurrencyCode : System.String.Empty ) }, null).Tag = objPaymentItem;
+                            ( ( objPaymentItem.Currency != null ) ? objPaymentItem.Currency.CurrencyCode : System.String.Empty ), 
+                            objPaymentItem.FactCurrency, objPaymentItem.FactPaymentValue}, null).Tag = objPaymentItem;
                     }
 
                     m_objPaymentsListArjive = CBudgetDocPaymentItemArjive.GetBudgetDocPaymentItemArjive(m_objProfile, m_objBudgetDoc.uuidID, null, ref strErr);
@@ -336,17 +351,25 @@ namespace ErpBudgetBudgetDoc
 
                 List<CBudgetDocPaymentItem> objChangedItemsList = new List<CBudgetDocPaymentItem>();
                 CBudgetDocPaymentItem objSrcItem = null;
+                CCurrency objNewFactCurrency = null;
                 foreach (DevExpress.XtraTreeList.Nodes.TreeListNode objNode in treeListPayments.Nodes)
                 {
                     objSrcItem = ((CBudgetDocPaymentItem)objNode.Tag);
-                    if (System.DateTime.Compare(System.Convert.ToDateTime(objNode.GetValue(colPaymentDate)), objSrcItem.PaymentDate) != 0)
+                    objNewFactCurrency = (CCurrency)objNode.GetValue(colFactCurrency);
+                    
+                    if( (System.DateTime.Compare(System.Convert.ToDateTime(objNode.GetValue(colPaymentDate)), objSrcItem.PaymentDate) != 0) ||
+                        (System.Convert.ToDouble(objNode.GetValue(colFactPaymentValue)) != objSrcItem.FactPaymentValue ) ||
+                        (objNewFactCurrency.uuidID.CompareTo(objSrcItem.FactCurrency.uuidID) != 0)
+                        )
                     {
                         objChangedItemsList.Add(new CBudgetDocPaymentItem() 
                         { 
                             ID = objSrcItem.ID,
                             PaymentDate = System.Convert.ToDateTime(objNode.GetValue(colPaymentDate)),
                             Currency = objSrcItem.Currency,
-                            PaymentValue = objSrcItem.PaymentValue
+                            PaymentValue = objSrcItem.PaymentValue,
+                            FactCurrency = objNewFactCurrency, 
+                            FactPaymentValue = System.Convert.ToDouble(objNode.GetValue(colFactPaymentValue))
                         });
                     }
                 }
@@ -392,7 +415,9 @@ namespace ErpBudgetBudgetDoc
                     foreach (CBudgetDocPaymentItemArjive objItem in objLog)
                     {
                         treeListPaymentsLog.AppendNode(new object[] { objItem.RecordUpdated, objItem.RecordUserUdpated, 
-                            objItem.PaymentDateOld, objItem.PaymentDateNew }, null).Tag = objItem;
+                            objItem.PaymentDateOld, objItem.PaymentDateNew, 
+                            objItem.FactCurrencyOld, objItem.FactCurrencyNew,
+                            objItem.FactPaymentValueOld, objItem.FactPaymentValueNew}, null).Tag = objItem;
                     }
                 }
                 objLog = null;
