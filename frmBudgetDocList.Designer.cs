@@ -308,6 +308,7 @@ namespace ErpBudgetBudgetDoc
             this.mitemAddComment = new System.Windows.Forms.ToolStripMenuItem();
             this.mitemDeleteComment = new System.Windows.Forms.ToolStripMenuItem();
             this.timer = new System.Windows.Forms.Timer(this.components);
+            this.mitemPaymentsList = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TabControlDocList)).BeginInit();
@@ -538,13 +539,14 @@ namespace ErpBudgetBudgetDoc
             this.toolStripMenuItem1,
             this.mitemTrnList,
             this.mitemDocStateList,
+            this.mitemPaymentsList,
             this.toolStripMenuItem8,
             this.mitemExportToExcel,
             this.mitemChange,
             this.mitemDePay,
             this.mitemChangeDocType});
             this.contextMenuStrip.Name = "contextMenuStrip";
-            this.contextMenuStrip.Size = new System.Drawing.Size(246, 258);
+            this.contextMenuStrip.Size = new System.Drawing.Size(246, 280);
             this.toolTipController.SetSuperTip(this.contextMenuStrip, null);
             this.contextMenuStrip.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip_Opening);
             // 
@@ -620,21 +622,21 @@ namespace ErpBudgetBudgetDoc
             // mitemChangePaymentDate
             // 
             this.mitemChangePaymentDate.Name = "mitemChangePaymentDate";
-            this.mitemChangePaymentDate.Size = new System.Drawing.Size(159, 22);
-            this.mitemChangePaymentDate.Text = "Дату оплаты...";
+            this.mitemChangePaymentDate.Size = new System.Drawing.Size(194, 22);
+            this.mitemChangePaymentDate.Text = "Дату и сумму оплаты...";
             this.mitemChangePaymentDate.Click += new System.EventHandler(this.mitemChangeDateBudgetDoc_Click);
             // 
             // mitemChangeCompany
             // 
             this.mitemChangeCompany.Name = "mitemChangeCompany";
-            this.mitemChangeCompany.Size = new System.Drawing.Size(159, 22);
+            this.mitemChangeCompany.Size = new System.Drawing.Size(194, 22);
             this.mitemChangeCompany.Text = "Компанию...";
             this.mitemChangeCompany.Click += new System.EventHandler(this.mitemChangeCompany_Click);
             // 
             // mitemChangePaymentType
             // 
             this.mitemChangePaymentType.Name = "mitemChangePaymentType";
-            this.mitemChangePaymentType.Size = new System.Drawing.Size(159, 22);
+            this.mitemChangePaymentType.Size = new System.Drawing.Size(194, 22);
             this.mitemChangePaymentType.Text = "Форму оплаты...";
             this.mitemChangePaymentType.Click += new System.EventHandler(this.mitemChangePaymentType_Click);
             // 
@@ -2839,6 +2841,13 @@ namespace ErpBudgetBudgetDoc
             // 
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
+            // mitemPaymentsList
+            // 
+            this.mitemPaymentsList.Name = "mitemPaymentsList";
+            this.mitemPaymentsList.Size = new System.Drawing.Size(245, 22);
+            this.mitemPaymentsList.Text = "Журнал оплат";
+            this.mitemPaymentsList.Click += new System.EventHandler(this.mitemPaymentsList_Click);
+            // 
             // frmBudgetDocList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3175,5 +3184,6 @@ namespace ErpBudgetBudgetDoc
         private System.Windows.Forms.ToolStripMenuItem mitemChange;
         private System.Windows.Forms.ToolStripMenuItem mitemChangeCompany;
         private System.Windows.Forms.ToolStripMenuItem mitemChangePaymentType;
+        private System.Windows.Forms.ToolStripMenuItem mitemPaymentsList;
     }
 }

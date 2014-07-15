@@ -2426,12 +2426,13 @@ namespace ErpBudgetBudgetDoc
                 else
                 {
                     mitemCopyBudgetDoc.Enabled = (SelectedGridView.RowCount > 0) && (SelectedGridView.FocusedRowHandle >= 0);
+                    mitemPaymentsList.Enabled = mitemCopyBudgetDoc.Enabled;
                     mitemDeleteBudgetDoc.Enabled = !(SelectedGridView == gridViewDocNotActive); //  ( SelectedGridView.RowCount > 0 ) && ( SelectedGridView.FocusedRowHandle >= 0 );
                     mitemNewBudgetDoc.Enabled = true;
                     mitemRefresh.Enabled = true;
                     mitemTrnList.Enabled = (SelectedGridView.RowCount > 0) && (SelectedGridView.FocusedRowHandle >= 0);
                     mitemExportToExcel.Enabled = (SelectedGridView.RowCount > 0);
-                    if ((SelectedGridView == gridViewDocNotActive) && (SelectedGridView.RowCount > 0) && (SelectedGridView.FocusedRowHandle >= 0))
+                    if ((SelectedGridView.RowCount > 0) && (SelectedGridView.FocusedRowHandle >= 0))
                     {
                         System.Guid uuidBudgetDocID = GetBudgetDocID();
                         if (uuidBudgetDocID.CompareTo(System.Guid.Empty) != 0)
@@ -2440,11 +2441,8 @@ namespace ErpBudgetBudgetDoc
                             ERP_Budget.Common.CBudgetDoc objBudgetDoc = GetBudgetDocByID(uuidBudgetDocID);
                             if (objBudgetDoc != null)
                             {
-                                if ((m_objProfile.GetClientsRight().GetState(ERP_Budget.Global.Consts.strDRAccountant) == true) ||
-                                    (m_objProfile.GetClientsRight().GetState(ERP_Budget.Global.Consts.strDRCashier) == true))
-                                {
-                                    mitemChangePaymentDate.Enabled = (objBudgetDoc.DocState.OrderNum == 4);
-                                }
+                                mitemChangePaymentDate.Enabled = ((m_objProfile.GetClientsRight().GetState(ERP_Budget.Global.Consts.strDRAccountant) == true) ||
+                                    (m_objProfile.GetClientsRight().GetState(ERP_Budget.Global.Consts.strDRCashier) == true));
                                 mitemDePay.Enabled = m_objProfile.GetClientsRight().GetState(ERP_Budget.Global.Consts.strDRInspector);
                             }
                         }
@@ -3737,7 +3735,7 @@ namespace ErpBudgetBudgetDoc
             return;
         }
         /// <summary>
-        /// Реадктирование даты оплаты заявки
+        /// Редактирование даты оплаты заявки
         /// </summary>
         /// <param name="objBudgetDoc">заявка</param>
         private void ChangeBudgetDocPaymentDate(ERP_Budget.Common.CBudgetDoc objBudgetDoc)
@@ -3748,7 +3746,7 @@ namespace ErpBudgetBudgetDoc
                 using (frmChangeDate objfrmChangeDate = new frmChangeDate(m_objProfile))
                 {
                     objfrmChangeDate.OpenForChangePaymentDate(objBudgetDoc, 
-                        ERP_Budget.Common.CUser.GetUsersInfo(this.m_objProfile) );
+                        ERP_Budget.Common.CUser.GetUsersInfo(this.m_objProfile), false );
                     if (objfrmChangeDate.DialogResult == DialogResult.OK)
                     {
                         DevExpress.XtraGrid.Views.Grid.GridView currGridView = GetGridViewBySelectedPage();
@@ -3770,6 +3768,49 @@ namespace ErpBudgetBudgetDoc
 
             return;
         }
+        /// <summary>
+        /// Редактирование даты оплаты заявки
+        /// </summary>
+        /// <param name="objBudgetDoc">заявка</param>
+        private void LoadBudgetDocPaymentList(ERP_Budget.Common.CBudgetDoc objBudgetDoc)
+        {
+            if (objBudgetDoc == null) { return; }
+            try
+            {
+                using (frmChangeDate objfrmChangeDate = new frmChangeDate(m_objProfile))
+                {
+                    objfrmChangeDate.OpenForChangePaymentDate(objBudgetDoc,
+                        ERP_Budget.Common.CUser.GetUsersInfo(this.m_objProfile), true);
+                }
+
+            }
+            catch (System.Exception f)
+            {
+                DevExpress.XtraEditors.XtraMessageBox.Show("Ошибка загрузки журнала оплат заявки.\n\nТекст ошибки: " + f.Message, "Ошибка",
+                   System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+            }
+
+            return;
+        }
+        private void mitemPaymentsList_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                System.Guid uuidBudgetDocID = GetBudgetDocID();
+                if (uuidBudgetDocID.CompareTo(System.Guid.Empty) != 0)
+                {
+                    LoadBudgetDocPaymentList(GetBudgetDocByID(uuidBudgetDocID));
+                }
+
+            }
+            catch (System.Exception f)
+            {
+                DevExpress.XtraEditors.XtraMessageBox.Show("Ошибка загрузки журнала оплат заявки.\n\nТекст ошибки: " + f.Message, "Ошибка",
+                   System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+            }
+
+            return;
+        }
         #endregion
 
         public DevExpress.XtraBars.BarManager GetbarManager()
@@ -3778,6 +3819,7 @@ namespace ErpBudgetBudgetDoc
             barManager.StatusBar = barStatus;
             return barManager;
         }
+
 
 
     }

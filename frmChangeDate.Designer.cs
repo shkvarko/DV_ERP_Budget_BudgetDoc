@@ -179,7 +179,7 @@
             // 
             this.tabPageChangeDate.Controls.Add(this.panelControl1);
             this.tabPageChangeDate.Name = "tabPageChangeDate";
-            this.tabPageChangeDate.Size = new System.Drawing.Size(561, 261);
+            this.tabPageChangeDate.Size = new System.Drawing.Size(580, 317);
             this.tabPageChangeDate.Text = "Дата";
             // 
             // panelControl1
@@ -192,7 +192,7 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl1.Location = new System.Drawing.Point(0, 0);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(561, 261);
+            this.panelControl1.Size = new System.Drawing.Size(580, 317);
             this.panelControl1.TabIndex = 1;
             // 
             // dtNewPaymentDate
@@ -242,7 +242,7 @@
             this.tabPageChangeCompany.Controls.Add(this.labelControl3);
             this.tabPageChangeCompany.Controls.Add(this.labelControl4);
             this.tabPageChangeCompany.Name = "tabPageChangeCompany";
-            this.tabPageChangeCompany.Size = new System.Drawing.Size(561, 261);
+            this.tabPageChangeCompany.Size = new System.Drawing.Size(580, 317);
             this.tabPageChangeCompany.Text = "Компания";
             // 
             // cboxCompanyNew
@@ -296,7 +296,7 @@
             this.tabPageChangePaymentType.Controls.Add(this.labelControl5);
             this.tabPageChangePaymentType.Controls.Add(this.labelControl6);
             this.tabPageChangePaymentType.Name = "tabPageChangePaymentType";
-            this.tabPageChangePaymentType.Size = new System.Drawing.Size(561, 261);
+            this.tabPageChangePaymentType.Size = new System.Drawing.Size(580, 317);
             this.tabPageChangePaymentType.Text = "Форма оплаты";
             // 
             // cboxPaymentTypeNew

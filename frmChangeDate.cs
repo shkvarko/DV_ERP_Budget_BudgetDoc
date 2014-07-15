@@ -275,8 +275,9 @@ namespace ErpBudgetBudgetDoc
         /// </summary>
         /// <param name="objBudgetDoc">бюджетный документ</param>
         /// <param name="objCurrentUser">пользователь</param>
+        /// <param name="bOnlyView">только для просмотра</param>
         public void OpenForChangePaymentDate(ERP_Budget.Common.CBudgetDoc objBudgetDoc, 
-            ERP_Budget.Common.CUser objCurrentUser  )
+            ERP_Budget.Common.CUser objCurrentUser, System.Boolean bOnlyView  )
         {
             try
             {
@@ -323,6 +324,10 @@ namespace ErpBudgetBudgetDoc
                 {
                     LoadArjiveBudgetDocPaymentItem((CBudgetDocPaymentItem)treeListPayments.Nodes[0].Tag);
                 }
+
+                treeListPayments.OptionsBehavior.Editable = !bOnlyView;
+                treeListPaymentsLog.OptionsBehavior.Editable = false;
+                btnOk.Enabled = !bOnlyView;
 
                 ShowDialog();
             }
